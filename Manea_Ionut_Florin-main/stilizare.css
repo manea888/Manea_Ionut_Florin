@@ -1,0 +1,61 @@
+
+
+/* Containerul care centrează butoanele pe orizontală */
+.button-group {
+    display: flex; /* Activează Flexbox pe container */
+    justify-content: center; /* Centrează butoanele pe orizontală */
+    gap: 15px; /* Spațiu între butoane */
+    margin-top: 25px; /* Spațiu deasupra */
+}
+.button-group button {
+    /* Eliminăm display: flex și proprietățile de centrare/aranjare */
+    border: 1px solid #11f066; 
+    border-radius: 10px;
+    padding: 5px 15px;
+    background-color: #08db59; 
+    box-shadow: 2px 2px 10px rgba(236, 4, 4, 0.1);
+    /* Lățimea maximă și margin sunt eliminate sau simplificate */
+    margin: 0; 
+    cursor: pointer;
+}
+/* Puteți folosi clasa .btn pentru stilizarea generică dacă doriți */
+
+
+.box-container {
+    /* STILUL DE BAZĂ AL BOX-ULUI */
+    background-color: #ffffff; /* Fundal deschis */
+    border: 1px solid #ccc;     /* Chenar subtil */
+    border-radius: 8px;         /* Colțuri rotunjite */
+    padding: 10px;              /* Spațiu în interiorul box-ului */
+    box-shadow: 2px 2px 10px rgba(236, 4, 4, 0.1); /* Umbră ușoară */
+    max-width: 300px;           /* Limitează lățimea box-ului */
+    max-height: 50%;
+    text-align: center;
+    /* CENTRAREA BOX-ULUI PE PAGINĂ (dacă este necesar) */
+    margin: 10px auto; 
+    
+    /* ARANJAREA CONȚINUTULUI ÎN BOX (Flexbox) */
+    display: flex;
+    flex-direction: column; /* Elementele se așează unele sub altele */
+    gap: 1px; /* Spațiu între fiecare element din box */
+}
+body {
+    /* Această linie centrează TOATE elementele de tip inline-block (inclusiv titlurile) */
+    text-align: center; 
+    
+    /* Celelalte proprietăți, inclusiv background, etc. */
+    background-color: #afaaf3; 
+    font-family: Arial, sans-serif;
+    /* ... restul stilurilor body ... */
+}
+
+h1{
+    
+    border-bottom: 2px solid black; 
+    padding-bottom: 5px;
+    display: inline-block; /* Asigură că linia se aplică doar lățimii textului */
+}
+
+h2,h4,h5,p{
+    text-align: left;
+}
