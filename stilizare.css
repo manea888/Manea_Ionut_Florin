@@ -1,61 +1,139 @@
-
-
-/* Containerul care centrează butoanele pe orizontală */
-.button-group {
-    display: flex; /* Activează Flexbox pe container */
-    justify-content: center; /* Centrează butoanele pe orizontală */
-    gap: 15px; /* Spațiu între butoane */
-    margin-top: 25px; /* Spațiu deasupra */
+/* RESETARE GENERALĂ */
+* {
+    box-sizing: border-box; /* Asigură calculul corect al dimensiunilor */
 }
-.button-group button {
-    /* Eliminăm display: flex și proprietățile de centrare/aranjare */
-    border: 1px solid #11f066; 
-    border-radius: 10px;
-    padding: 5px 15px;
-    background-color: #08db59; 
-    box-shadow: 2px 2px 10px rgba(236, 4, 4, 0.1);
-    /* Lățimea maximă și margin sunt eliminate sau simplificate */
-    margin: 0; 
-    cursor: pointer;
-}
-/* Puteți folosi clasa .btn pentru stilizarea generică dacă doriți */
 
-
-.box-container {
-    /* STILUL DE BAZĂ AL BOX-ULUI */
-    background-color: #ffffff; /* Fundal deschis */
-    border: 1px solid #ccc;     /* Chenar subtil */
-    border-radius: 8px;         /* Colțuri rotunjite */
-    padding: 10px;              /* Spațiu în interiorul box-ului */
-    box-shadow: 2px 2px 10px rgba(236, 4, 4, 0.1); /* Umbră ușoară */
-    max-width: 300px;           /* Limitează lățimea box-ului */
-    max-height: 50%;
-    text-align: center;
-    /* CENTRAREA BOX-ULUI PE PAGINĂ (dacă este necesar) */
-    margin: 10px auto; 
-    
-    /* ARANJAREA CONȚINUTULUI ÎN BOX (Flexbox) */
-    display: flex;
-    flex-direction: column; /* Elementele se așează unele sub altele */
-    gap: 1px; /* Spațiu între fiecare element din box */
-}
 body {
-    /* Această linie centrează TOATE elementele de tip inline-block (inclusiv titlurile) */
-    text-align: center; 
-    
-    /* Celelalte proprietăți, inclusiv background, etc. */
-    background-color: #afaaf3; 
-    font-family: Arial, sans-serif;
-    /* ... restul stilurilor body ... */
+    background-color: #f4f6f8; /* Gri foarte deschis, curat */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font modern */
+    color: #333; /* Text gri închis pentru lizibilitate */
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+    text-align: center; /* Păstrăm centrarea cerută */
 }
 
-h1{
-    
-    border-bottom: 2px solid black; 
-    padding-bottom: 5px;
-    display: inline-block; /* Asigură că linia se aplică doar lățimii textului */
+/* TITLURI */
+h1 {
+    color: #2c3e50; /* Albastru închis */
+    border-bottom: 3px solid #2c3e50;
+    display: inline-block;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+    font-weight: 600;
 }
 
-h2,h4,h5,p{
-    text-align: left;
+h2, h3, h4, h5 {
+    color: #34495e;
+    margin-top: 20px;
+}
+
+h2, h4, h5, p {
+    text-align: center; /* Modernizare: arată mai bine centrat pe landing page */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+p {
+    color: #555;
+    font-size: 1.1em;
+}
+
+/* NAVIGARE (Grupul de butoane) */
+.button-group {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permite butoanelor să treacă pe rândul următor pe mobil */
+    gap: 10px;
+    margin-bottom: 40px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Umbră fină */
+}
+
+.button-group a {
+    text-decoration: none;
+}
+
+.button-group button {
+    background-color: #2c3e50; /* Albastru Marin */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Animație fină la hover */
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.button-group button:hover {
+    background-color: #3498db; /* Albastru mai deschis la mouse over */
+    transform: translateY(-2px); /* Efect de ridicare */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* CONTAINER FORMULARE (Box Container) */
+.box-container {
+    background-color: #ffffff;
+    border: none; /* Scoatem border-ul vechi */
+    border-top: 5px solid #2c3e50; /* Accent colorat sus */
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Umbră modernă */
+    max-width: 400px;
+    width: 100%;
+    margin: 30px auto; /* Centrare pe pagină */
+    text-align: left; /* Textul din formular aliniat stânga */
+    display: flex;
+    flex-direction: column;
+}
+
+/* STILIZARE INPUT-uri */
+label {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    display: block;
+}
+
+input[type="text"], 
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    transition: border 0.3s;
+}
+
+input[type="text"]:focus, 
+input[type="password"]:focus {
+    border-color: #3498db;
+    outline: none;
+    background-color: #fff;
+}
+
+/* Butonul de submit din formular */
+.box-container .button-group.button {
+    margin-top: 20px;
+    padding: 0;
+    box-shadow: none;
+    background: none;
+}
+
+.box-container button {
+    width: 100%; /* Buton lat cât formularul */
+    background-color: #27ae60; /* Verde pentru acțiuni pozitive (Trimite/Login) */
+}
+
+.box-container button:hover {
+    background-color: #2ecc71;
 }
