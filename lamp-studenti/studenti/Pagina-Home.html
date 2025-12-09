@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Proiect TW - Gestionare cazuri juridice</title>
-
-	</head>
+<head>
+    <meta charset="UTF-8">
+    <title>Gestionare cazuri juridice</title>
+    <link rel="stylesheet" type="text/css" href="stilizare.css">
+</head>
 <body>
-	<h1>Gestionare cazuri juridice</h1>
-	<h2>Hartogaraia ta, placerea noastra</h2>
-	<button type="button">Home</button>
-		<button type="button">Procese</button>
-		<button type="button">Cazuri</button>
-		<button type="button">Avocati</button>
-		<button type="button">Despre noi!</button>
+    
+    <div class="button-group">
+        <a href="Pagina-Home.html"><button type="button">Home</button></a>
+        <a href="Pagina-Procese.html"><button type="button">Procese</button></a>
+        <a href="Pagina-Cazuri.html"><button type="button">Cazuri</button></a>
+        <a href="Pagina-Cazuri-Pro-Bono.html"><button type="button">Cazuri Pro bono</button></a>
+        <a href="Pagina-Avocati.html"><button type="button">Avocati</button></a>
+        <a href="Pagina-Despre noi.html"><button type="button">Despre noi</button></a>
+        <a href="Pagina-Login.html"><button type="button">Login</button></a>
+    </div>
 
-	<p>Aceste este un site pentru o casa de avocatura cu scopul de a ajuta la o navigare mai simpla in baza de date a acesteia.</p>
+    <h1>Gestionare cazuri juridice</h1>
 
-	<p>Aici veti gasi informatii pentru a ajunge la ceea ce aveti nevoie!</p>
+    <h2>Hârțogăraia ta, plăcerea noastră</h2>
+    <p>Acesta este un site pentru o casă de avocatură cu scopul de a ajuta la o navigare mai simplă în baza de date a acesteia.</p>
+    <p>Aici veți găsi informații pentru a ajunge la ceea ce aveți nevoie!</p>
 
+    <div class="box-container">
+        <h3>Dacă ai nevoie de noi:</h3>
+        
+        <label for="telefon">Număr de telefon:</label>
+        <input type="text" id="telefon" name="telefon">
+        
+        <label for="nume">Nume complet:</label>
+        <input type="text" id="nume" name="nume">
+        
+        <div class="button-group button" style="padding:0; box-shadow:none;">
+            <a href="Pagina-Home.html" style="width:100%">
+                <button type="button" style="width:100%">Contactează-ne</button>
+            </a>
+        </div>
+    </div>
 
-
-	<h3>Daca ai nevoie de noi:</h3>
-	<label for="Text1">Numar de telefon:</label>
-		<input type="text" id="Text1" name="text1"><br>
-		<label for="Text1">Nume complet:</label>
-		<input type="text" id="Text1" name="text1"><br>
-		<button type="button">Contacteaza-ne</button>
-<body>
-
-<html>
+</body>
+</html>
