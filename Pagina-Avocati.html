@@ -1,39 +1,110 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>Pagina-Avocati</title>
-        <link rel="stylesheet" type="text/css" href="stilizare.css">
-	</head>
+<head>
+    <meta charset="UTF-8">
+    <title>Echipa Noastră (API Fetch)</title>
+    <link rel="stylesheet" type="text/css" href="stilizare.css">
+    <style>
+        /* Stiluri pentru tabel si formular */
+        table { width: 100%; max-width: 900px; margin: 20px auto; border-collapse: collapse; background: white; }
+        th, td { padding: 12px; border-bottom: 1px solid #ddd; text-align: left; }
+        th { background-color: #2c3e50; color: white; }
+        
+        /* Formular simplu */
+        .form-add { max-width: 500px; margin: 20px auto; padding: 20px; background: white; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .form-add input { width: 100%; padding: 8px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 4px; }
+        .btn-add { width: 100%; background-color: #27ae60; color: white; padding: 10px; border: none; cursor: pointer; }
+        .btn-add:hover { background-color: #219150; }
+    </style>
+</head>
 <body>
-	<h1>Aici puteti gasi lista cu avocatii nostri!</h1>
 
     <div class="button-group">
-<a href="Pagina-Home.html">
-        <button type="button">Home</button>
-    </a>
-    <a href="Pagina-Procese.html">
-        <button type="button">Procese</button>
-    </a>
-    <a href="Pagina-Cazuri.html">
-        <button type="button">Cazuri</button>
-    </a>
-    <a href="Pagina-Cazuri-Pro-Bono.html">
-        <button type="button">Cazuri Pro bono</button>
-    </a>
-    <a href="Pagina-Avocati.html">
-        <button type="button">Avocati</button>
-    </a>
-    <a href="Pagina-Despre noi.html">
-        <button type="button">Despre noi!</button>
-    </a>
-    <a href="Pagina-Login.html">
-        <button type="button">Login</button>
-    </a>
-</div>
-		<h4>Avocati:</h4>
+        <a href="Pagina-Home.html"><button type="button">Home</button></a>
+        <a href="Pagina-Procese.html"><button type="button">Procese</button></a>
+        <a href="Pagina-Avocati.html"><button type="button">Avocați</button></a>
+    </div>
 
-<body>
+    <h1>Gestionare Avocați (Fetch API)</h1>
 
+    <div class="form-add">
+        <h3>Adaugă un Avocat Nou</h3>
+        <input type="text" id="nume" placeholder="Nume Complet" required>
+        <input type="text" id="specializare" placeholder="Specializare (ex: Penal)" required>
+        <input type="text" id="telefon" placeholder="Telefon" required>
+        <input type="text" id="email" placeholder="Email" required>
+        <button class="btn-add" onclick="adaugaAvocat()">Salvează Avocat</button>
+    </div>
 
-<html>
+    <h3>Lista Avocați (Încărcată prin Fetch)</h3>
+    <table id="tabel-avocati">
+        <thead>
+            <tr>
+                <th>Nume</th>
+                <th>Specializare</th>
+                <th>Telefon</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+
+    <script>
+        // Funcția GET: Cere lista de la API
+        function incarcaLista() {
+            fetch('api_avocati.php') 
+                .then(response => response.json()) 
+                .then(data => {
+                    const tbody = document.querySelector('#tabel-avocati tbody');
+                    tbody.innerHTML = ''; 
+
+                    data.forEach(avocat => {
+                        const row = `<tr>
+                            <td>${avocat.nume_complet}</td>
+                            <td>${avocat.specializare}</td>
+                            <td>${avocat.telefon}</td>
+                            <td>${avocat.email}</td>
+                        </tr>`;
+                        tbody.innerHTML += row;
+                    });
+                })
+                .catch(err => console.error('Eroare:', err));
+        }
+
+        // Funcția POST: Trimite datele la API
+        function adaugaAvocat() {
+            const dateDeTrimis = {
+                nume: document.getElementById('nume').value,
+                specializare: document.getElementById('specializare').value,
+                telefon: document.getElementById('telefon').value,
+                email: document.getElementById('email').value
+            };
+
+            fetch('api_avocati.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dateDeTrimis)
+            })
+            .then(response => response.json())
+            .then(result => {
+                if (result.success) {
+                    alert('Avocat adăugat cu succes!');
+                    incarcaLista(); 
+                    // Golim input-urile
+                    document.getElementById('nume').value = '';
+                    document.getElementById('specializare').value = '';
+                    document.getElementById('telefon').value = '';
+                    document.getElementById('email').value = '';
+                } else {
+                    alert('Eroare: ' + result.error);
+                }
+            });
+        }
+
+        // Pornim totul
+        incarcaLista();
+    </script>
+
+</body>
+</html>
